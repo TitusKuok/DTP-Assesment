@@ -204,7 +204,9 @@ if __name__ == "__main__":
                     print_all_flying()
                 elif Q.lower() == 'fanged':
                     print_all_fanged()
-                elif Q.lower() == 'beast': 
+                elif Q.lower() == 'beast':
+                    print_all_beast()
+                elif Q.lower() == 'brute':
                     print_all_brute()
                 elif Q.lower() == 'piscine':
                     print_all_piscine()
