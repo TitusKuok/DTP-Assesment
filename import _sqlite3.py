@@ -153,34 +153,67 @@ def print_all_beast():
             print("________________________________________________________________")
             print("Monster: ",print_data[0],"\n","Class: ",print_data[1],"\n","Elements Or Status Effect: ",print_data[2:])
         print("________________________________________________________________")
+
+
 #check if this program was used as main program or not.
 if __name__ == "__main__":
-    #Ask for user's input
-    print("""What classes of monster you want to look for?\n Input 1 for all monster\n Input 2 for Elder Dragon\n Input 3 for Flying Wyverns\n Input 4 for Fanged Wyverns\n Input 5 for Fanged Beast\n Input 6 for Brute Wyverns\n Input 7 for Piscine Wyverns\n Input 8 for Bird Wyverns\n Input 9 for Relicts\n Input 0 to close the program""")
-#Keep asking for input from user
-while True:
-        Q = input("Select the classes:\n")
-        #run different def depends on user input.
-        if Q == '1':
-            print_all_monsters()
-        elif Q == '2':
-            print_all_elder()
-        elif Q == '3':
-            print_all_flying()
-        elif Q == '4':
-            print_all_fanged()
-        elif Q == '5':
-            print_all_beast()
-        elif Q == '6':
-            print_all_brute()
-        elif Q == '7':
-            print_all_piscine()
-        elif Q == '8':
-            print_all_Bird()
-        elif Q == '9':
-            print_all_Relicts()
-        elif Q == '0':
+    Accessbility = True
+    
+    ADMIN_USERNAME = 'OSS'
+    ADMIN_PASSWORD = 'BOSS'
+    print("""Type "I don't know" if you don't know the admin username or password.\n""")
+    while True:
+        username = input("Please input Admin username.\n")
+        password = input("Please input Admin password.\n")
+        if username != ADMIN_USERNAME and username != "I don't know":
+            print('That is not the correct Admin username.')
+            print("""Type " I don't know " if you don't know the admin username or password.\n""")
+        elif password != ADMIN_PASSWORD and password != "I don't know":
+            print("That is not the correct Admin password.")
+            print("""Type " I don't know "  in both input if you don't know the admin username or password.\n""")
+            #Ask the user a question if he/she input "I don't know"
+        elif username == "I don't know" or password == "I don't know":
+            while True:
+                Identify = input("Are you the students of Mr O'Sullivan?\n")
+                #If user input is "No" then the access for this prorgam will be denied
+                if Identify != "Yes":
+                    print("No, you don't have any access for this program")
+                    Accessbility = False
+                    break
+                else:
+                    #If user input is "Yes" then he/she has the access for this program
+                    print("Yes, you have the access for this progress.")
+                    Accessbility = True
+                    break
             break
         else:
-            print("Please type a number from 0 to 9")
-            print("""What classes of monster you want to look for?\n Input 1 for all monster\n Input 2 for Elder Dragon\n Input 3 for Flying Wyverns\n Input 4 for Fanged Wyverns\n Input 5 for Fanged Beast\n Input 6 for Brute Wyverns\n Input 7 for Piscine Wyverns\n Input 8 for Bird Wyverns\n Input 9 for Relicts\n Input 0 to close the program""")
+            break
+    #Ask for user's input
+    if Accessbility == True:
+        print("""\nWhat classes of monster you want to look for?\n Input "ALL" for all monster\n Input "Elder" for Elder Dragon\n Input "Flying" for Flying Wyverns\n Input "Fanged" for Fanged Wyverns\n Input "Beast" for Fanged Beast\n Input "Brute" for Brute Wyverns\n Input "Piscine" for Piscine Wyverns\n Input "Bird" for Bird Wyverns\n Input "Relicts" for Relicts\n Input "Stop" to close the program""")
+        #Keep asking for input from user
+        while True:
+                Q = input("\nSelect the classes:\n")
+                #run different defined function depends on user input.
+                #Use .lower() function to prevents user input some capital letter.
+                if Q.lower()  == 'all':
+                    print_all_monsters()
+                elif Q.lower() == 'elder':
+                    print_all_elder()
+                elif Q.lower() == 'flying':
+                    print_all_flying()
+                elif Q.lower() == 'fanged':
+                    print_all_fanged()
+                elif Q.lower() == 'beast': 
+                    print_all_brute()
+                elif Q.lower() == 'piscine':
+                    print_all_piscine()
+                elif Q.lower() == 'bird':
+                    print_all_Bird()
+                elif Q.lower() == 'relicts':
+                    print_all_Relicts()
+                elif Q.lower() == 'stop':
+                    break
+                else:
+                    print("Please follow the instruction below:\n")
+                    print("""What classes of monster you want to look for?\n Input "ALL" for all monster\n Input "Elder" for Elder Dragon\n Input "Flying" for Flying Wyverns\n Input "Fanged" for Fanged Wyverns\n Input "Beast" for Fanged Beast\n Input "Brute" for Brute Wyverns\n Input "Piscine" for Piscine Wyverns\n Input "Bird" for Bird Wyverns\n Input "Relicts" for Relicts\n Input "Stop" to close the program""")
