@@ -1,7 +1,7 @@
 #Import SQL intrepeter
 import sqlite3
 #Select ghef.db as the database that we are going to use in this program
-DATABASE = 'ghef.db'
+DATABASE = 'MHWI_Data.db'
 #define a function that can print out all monsters
 def print_all_monsters():
     #Connect ghef.db with SQL intrepeter
