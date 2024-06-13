@@ -25,6 +25,7 @@ def print_all_monsters():
         print("________________________________________________________________")
 #define a function that can print out all elder dragons
 def print_all_elder():
+    '''Each section of in all the defined function below is exactly same as the print_all_monster()'''
     with sqlite3.connect(DATABASE) as db:
         cursor = db.cursor()    
         #Add "WHERE" to find all elder dragon
@@ -137,11 +138,11 @@ def print_all_Relicts():
             print("Monster: ",print_data[0],"\n","Class: ",print_data[1],"\n","Elements Or Status Effect: ",print_data[2:])
         print("________________________________________________________________")
 
-
+#Define a function that can print all fanged beast  
 def print_all_beast():
     with sqlite3.connect(DATABASE) as db:
         cursor = db.cursor()    
-        #Add "WHERE" to find all fanged beast
+        '''At the query below we will add "WHERE Classes == 4"at the end of the query to find all fanged beast.'''
         a = f"SELECT Monsters_name.MonstersNames, Monster_classes.Monster_Classes, e1.Elements_And_Status, e2.Elements_And_Status, e3.Elements_And_Status, e4.Elements_And_Status, e5.Elements_And_Status FROM Monsters_name JOIN Monster_classes ON Monsters_name.Classes = Monster_classes.ID LEFT JOIN Elements_And_Abnormal_Status as e1 ON Monsters_name.Type1 = e1.Elements_ID LEFT JOIN Elements_And_Abnormal_Status as e2 ON Monsters_name.Type2 = e2.Elements_ID LEFT JOIN Elements_And_Abnormal_Status as e3 ON Monsters_name.Type3 = e3.Elements_ID LEFT JOIN Elements_And_Abnormal_Status as e4 ON Monsters_name.Type4 = e4.Elements_ID LEFT JOIN Elements_And_Abnormal_Status as e5 ON Monsters_name.Type5 = e5.Elements_ID WHERE Classes = 4;"
         cursor.execute(a)
         result = cursor.fetchall()
@@ -165,7 +166,7 @@ if __name__ == "__main__":
     ADMIN_PASSWORD = 'BOSS'
     #Limit the tries
     tries = 0
-    print("""Type "I don't know" if you don't know the admin username or password.\n""")
+    print("""Type "I don't know" if you don't know the admin username or password.""")
     print(f"You still have {3 -  tries} tries left")
     while True:
         username = input("Please input Admin username.\n")
@@ -175,18 +176,18 @@ if __name__ == "__main__":
             #Set Accessbility to False if tries = 2
             Accessbility = False
             break
-        if username != ADMIN_USERNAME and username != "I don't know":
+        if username != ADMIN_USERNAME and username.lower() != "i don't know":
             tries += 1
             print('That is not the correct Admin username.')
             print(f"You still have {3 -  tries} tries left")
             print("""Type " I don't know " in both input if you don't know the admin username or password.\n""")
-        elif password != ADMIN_PASSWORD and password != "I don't know":
+        elif password != ADMIN_PASSWORD and password.lower() != "i don't know":
             tries += 1
             print("That is not the correct Admin password.")
             print(f"You still have {3 - tries} tries left")
             print("""Type " I don't know "  in both input if you don't know the admin username or password.\n""")
             #Ask the user a question if he/she input "I don't know"
-        elif username == "I don't know" or password == "I don't know":
+        elif username.lower() == "i don't know" or password.lower() == "i don't know":
             #Create a list for the multiple answer for the fact question.
             Special_Access = ["duck", 'duck!', 'little duck!', "ducky!", "ducky", "little ducky!"]
             Identify = input("What can help improve your programming skills?\n")
@@ -197,7 +198,7 @@ if __name__ == "__main__":
                 Accessbility = False
                 break
             else:
-                #If user input is if in the list created above" then he/she has the access for this program
+                #If user's input is in the list created above" then he/she has the access for this program
                 print("Yes, you have the access for this progress.")
                 Accessbility = True
                 break
